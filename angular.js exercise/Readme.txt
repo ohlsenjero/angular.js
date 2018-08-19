@@ -192,7 +192,7 @@ Bidirectional Data Binding
 changes in the model update the view and viceversa.
 
 
-in Angular.js  "controller and model states are upheld within the client’s web browser" (rather than the server). 
+in Angular.js  "controller and model states are upheld within the clientâ€™s web browser" (rather than the server). 
 
 
 so back at MVC. 
@@ -219,7 +219,7 @@ commonly structured as hierarchies (rehuse names in different contexts)
 
 $http
 
-"AngularJS provides $http control which works as a service to read data from the server. $http is an AngularJS service for reading data from remote servers. The $http is a core AngularJS service that is used to communicate with the remote HTTP service via browser’s XMLHttpRequest object or via JSONP"
+"AngularJS provides $http control which works as a service to read data from the server. $http is an AngularJS service for reading data from remote servers. The $http is a core AngularJS service that is used to communicate with the remote HTTP service via browserâ€™s XMLHttpRequest object or via JSONP"
 
 JSON vs JSONP?
 
@@ -329,7 +329,7 @@ Maybe something like Sass would be much more effective there.
 Now let's add some bootstrap.js code, make it look semi=flash, and we're done
 
 
-.collapse = .sideDown, and so on..
+.collapse = .slideDown, and so on..
 
 
 ..well, I would like to add a crossfade, but for that I would need another set of <json-data>
