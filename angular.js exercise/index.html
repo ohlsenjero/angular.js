@@ -68,8 +68,7 @@ this works, but the JSON data is already marked-up, so loading it here as text l
   
 
           if($scope.data[i] == item){
-            //... and if the titles match, then load a new variable, extra, with the corresponding data
-            ///(title is passed as an argument here as "item")
+             //... and if they match (based on argument passed here as "item"), then load a new variable -extra- with the corresponding data
             $scope.extra = $scope.data[i];
           }   
          // $scope.dontshowme = true; ////  same as showme above
@@ -113,13 +112,7 @@ this works, but the JSON data is already marked-up, so loading it here as text l
       angular.bootstrap(document, ['myApp']);
     });
 
-    // a little flair
-
-  
-
-
-    
-
+    // + a little flair
     var titleClick = false;
       
 
