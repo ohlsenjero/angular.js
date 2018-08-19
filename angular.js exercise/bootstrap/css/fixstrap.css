@@ -1,0 +1,99 @@
+html, body {
+  margin:0;
+    -webkit-margin-end:0;
+    -webkit-margin-start:0;
+    -webkit-margin-before:0;
+  padding:0;
+}
+
+.wrapper {
+  display: block;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.main-title {
+  margin-top:50px;
+  text-align: center;
+}
+
+.main-title-left {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.main-title-left:hover {
+  cursor: pointer;
+  color: #4B2A33;
+}
+
+.span2 {
+  width: 20%;
+  margin-left: 40%;
+  float: left;
+  margin-top:30px;
+}
+
+.span2 h4 {
+  width: auto;
+  background-color: #dddeff;
+  padding: 12px 0;
+  border-radius: 2%;
+}
+
+.span2 li {
+  text-align: center;
+  padding:10px;
+  color:#6e616c;
+  display: block;
+}
+
+ul {
+  width: auto;
+  margin:0;
+  -webkit-margin-after:0;
+  -webkit-margin-start:0;
+  -webkit-margin-end: 0;
+  -webkit-padding-start:0;
+  list-style: none;
+}
+
+
+.span2 li:hover {
+  cursor: pointer;
+}
+
+.span10 {
+  display: none;
+  float: left;
+  width: 50%;
+  margin: 0 8%;
+  margin-top:30px;
+  padding: 2%;
+  background-color: #eeeddd;
+  border-radius: 1%;
+}
+
+.span10 h2, .span10 div {
+  margin-bottom:20px;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+@media screen and (max-width:1080px) {
+  .span2 {
+    width: 100%;
+    margin-left: 0;
+  }
+
+   .span10 {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+

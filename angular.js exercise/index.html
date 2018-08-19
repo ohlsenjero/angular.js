@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Angular-js App</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script src="angular.js"></script>
+  <script src="bootstrap/js/bootstrap.js"></script>
+
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" href="bootstrap/css/fixstrap.css" />
+
+
+
+
+</head>
+<body ng-app="myApp">
+
+<div class="wrapper">
+  <h1 class="main-title">Exercise App</h1>
+
+  <div class="container-fluid" ng-controller="MyController">
+   
+  <div class="span2">
+    <h4 class="main-title-left" data-toggle="collapse" data-target="#demo">Click here to see our titles</h4>
+    <ul  id="demo" class="collapse">
+      <li ng-repeat="item in data" ng-click="addExtraData(item)">{{item.title}} <hr /></li>
+
+    </ul>
+  </div>
+<!--    <ul><li ng-hide="showme" ng-bind="extra"></li>
+    <li ng-show="dontshowme" ng-bind="extra.author"></li>
+    <li ng-show="dontshowme" ng-bind="extra.body"></li>
+  </ul> 
+this works, but the JSON data is already marked-up, so loading it here as text looks wrong, and misses the point-->
+  
+    <json-data  class="span10">
+      
+      <h2></h2>
+      <div></div>
+      <h4></h4>
+
+    </json-data>
+
+  </div>
+
+</div>
+</body>
+
+  <script>
+
+
+
+    angular.module('myApp', []).controller('MyController', ['$scope', '$http', function ($scope, $http) {
+   
+      $scope.data = [];
+     // $scope.showme = true;  ////  not needed anymore
+
+     /// when items in the list are clicked...
+      $scope.addExtraData = function(item){
+
+        //... go through the items in the already saved dataArray...
+        for(var i=0; i< $scope.data.length; i++){
+  
+
+          if($scope.data[i] == item){
+            //... and if the titles match, then load a new variable, extra, with the corresponding data
+            ///(title is passed as an argument here as "item")
+            $scope.extra = $scope.data[i];
+          }   
+         // $scope.dontshowme = true; ////  same as showme above
+        }
+
+        /// we need to get the data back to Object format, so the already included html tags are displayed as such
+        var obj = JSON.parse(JSON.stringify($scope.extra));
+
+        /// while creating custom tags for them in our template
+        var title = document.querySelector('json-data h2');
+        var body = document.querySelector('json-data div');
+        var author = document.querySelector('json-data h4');
+
+        // an finally loading these tags with the mark-up JSON-object data
+        title.innerHTML = obj.title;
+        body.innerHTML = obj.body;
+        author.innerHTML = obj.author;
+
+        $('.span10').hide();
+
+        $('.span10').fadeIn(200);
+      }
+
+      /// Ajax request/response
+      $http.get("data.json").then(function (data){
+
+        console.log("Success", data);
+        
+        for(var i=0; i< data.data.length; i++){
+          //alert($scope.response[i].author);
+          $scope.data.push((data.data[i]));
+        }
+
+      },function (error){
+        console.log("error");
+      });
+
+    }]); /// END module().controller
+
+    angular.element(function() {
+      angular.bootstrap(document, ['myApp']);
+    });
+
+    // a little flair
+
+  
+
+
+    
+
+    var titleClick = false;
+      
+
+    $('.main-title-left').click(function(){
+
+
+      toggleLeft();
+
+      $(window).resize(function(){
+         if(!titleClick){
+            titleClick=true;
+          }else{
+            titleClick=false;
+          }
+
+        toggleLeft();
+      }).stop(true, true);
+
+      function toggleLeft(){
+
+        if($(window).width() >= 1080){
+
+
+          if(!titleClick){
+            titleClick=true;
+          }else{
+            titleClick=false;
+          }
+          
+          
+          if(titleClick){
+            
+              $('.span2').animate({
+                'width': 20+'%',
+                'margin-left':0
+              }, 200);
+            
+          }else{
+            setTimeout(function(){ 
+              $('.span2').animate({
+                'width': 20+'%',
+                'margin-left': 40+'%'
+                }, 200);
+              }, 300);
+
+            $('.span10').fadeOut(200);
+          }
+        }else{
+
+          if(!titleClick){
+            titleClick=true;
+          }else{
+            titleClick=false;
+          }
+
+          if(!titleClick){
+            $('.span10').fadeOut(200);
+          }
+            $('.span2').animate({
+                'width': 100+'%',
+                'margin-left':0
+            }, 200);
+        }
+      }
+    });
+
+  
+  </script>
+
+</html>
